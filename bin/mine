@@ -1,0 +1,9 @@
+geth \
+  --datadir .datadir \
+  --minerthreads 1 \
+  --etherbase 0xf79e502ffdc85c91e643f61eebcadecadd7330e0 \
+  --networkid 1000 \
+  --rpc \
+  --mine \
+  --ipcpath .datadir/geth.ipc \
+  --nodiscover
