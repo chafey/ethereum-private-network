@@ -1,5 +1,5 @@
 # ethereum-private-network
-Instructions on how to setup an ethereum private network.
+Instructions on how to setup an ethereum private test network for development.
 This was done with Mac OS X.
 
 Pre-requisities
@@ -73,3 +73,16 @@ Send ether from one account to another
 > web3.eth.getBalance(to)
 
 20000000000000000001
+
+Deploy the greeter contract and call the greet method
+-----------------------------------------------------
+
+> loadScript('deloy.js');
+
+Contract mined! address: 0x1b9dfd2ea79f59491b7881c508010af5410cd096 transactionHash: 0xe92dfdbea562e59661a483f21b8d2fedebebe4eb0b9cee00bfc9fb97ffa329e6
+null [object Object]
+Contract mined! address: 0xe9f5d76475b180a709025dde31091b9793742119 transactionHash: 0x1ca2b4240d5957ea68ff9dc5aeee08050b8d533e1636586e47ad9222b945b1f1
+
+> greeter.greet();
+
+"hello private test network"
