@@ -32,14 +32,14 @@ This script will clear/reset your ethereum blockchain and create the following
 accounts with the listed ether:
 
 ```
-f79e502ffdc85c91e643f61eebcadecadd7330e0, 20
-1d8a14344df5b8f96f659c965614f623df83d5e9, 20
-22fb800aaeab6af13e8fd76623b6acab3ee15b62, 20
-428a0e1c7f7e90dc9b4c459116776d9070fb62d3, 20
-cd7bf72ae6bc793e4f8418490be4be0b4ee900b8, 20
-e0f95e84a680da21b9d410d59553c91aff515104, 20
-4529a7ad0d4979fcb3e8e577339fac51d46afc73, 0
-a53cfb5697f17b97e36db9eb76faa2d8868f0ecf, 0
+0xf79e502ffdc85c91e643f61eebcadecadd7330e0, 20
+0x1d8a14344df5b8f96f659c965614f623df83d5e9, 20
+0x22fb800aaeab6af13e8fd76623b6acab3ee15b62, 20
+0x428a0e1c7f7e90dc9b4c459116776d9070fb62d3, 20
+0xcd7bf72ae6bc793e4f8418490be4be0b4ee900b8, 20
+0xe0f95e84a680da21b9d410d59553c91aff515104, 20
+0x4529a7ad0d4979fcb3e8e577339fac51d46afc73, 0
+0xa53cfb5697f17b97e36db9eb76faa2d8868f0ecf, 0
 ```
 
 All account have the password 'changeme'.
@@ -51,9 +51,18 @@ The ethereum network needs a mining node to process transactions:
 
 > bin/mine
 
+The first time you run geth on your machine, it will generate a DAG.  This can
+take several minutes depending upon the speed of your CPU.  Once it finishes
+generating the DAG, it will start mining and generating messages like this:
+
+```
+I0124 14:41:07.325501 miner/unconfirmed.go:83] 🔨  mined potential block #1 [f60eb249…], waiting for 5 blocks to confirm
+I0124 14:41:07.325835 miner/worker.go:516] commit new work on block 2 with 0 txs & 0 uncles. Took 225.475µs
+```
+
 The mining node deposits ethereum into the following account:
 
-f79e502ffdc85c91e643f61eebcadecadd7330e0
+0xf79e502ffdc85c91e643f61eebcadecadd7330e0
 
 Attach to your mining node
 --------------------------
@@ -104,6 +113,10 @@ ether was moved:
 > web3.eth.getBalance(from)
 
 19999579999999999999
+
+NOTE: The reason more than 1 is gone from the ether balance is because it costs
+ether to execute the send ether transaction.  This transaction fee is given to
+the miner.
 
 > web3.eth.getBalance(to)
 
