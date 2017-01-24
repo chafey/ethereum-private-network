@@ -1,4 +1,6 @@
 rm -rf .datadir
 mkdir .datadir
 cp -r config/keystore .datadir
-geth --datadir .datadir init config/genesis.json
+geth \
+  --datadir .datadir \
+  init config/genesis.json

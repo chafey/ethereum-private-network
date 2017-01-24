@@ -5,10 +5,13 @@ This was done with Mac OS X.
 Pre-requisities
 ---------------
 
-* homebrew
+* [homebrew](http://brew.sh/)
 
 Install Geth
 ------------
+
+[Geth](https://github.com/ethereum/go-ethereum/wiki/geth) is the command line
+interface for running a full ethereum node implemented in Go.
 
 > brew update
 
@@ -21,38 +24,55 @@ Install Geth
 Initialize local test network
 -----------------------------
 
+The first thing you need to do is initialize your ethereum test network:
+
 > bin/init
 
-the local test network is initialized with the following accounts with ETH:
+This script will clear/reset your ethereum blockchain and create the following
+accounts with the listed ether:
 
-"0xf79e502ffdc85c91e643f61eebcadecadd7330e0", 20
-"0x1d8a14344df5b8f96f659c965614f623df83d5e9", 20
-"0x22fb800aaeab6af13e8fd76623b6acab3ee15b62", 20
-"0x428a0e1c7f7e90dc9b4c459116776d9070fb62d3", 20
-"0xcd7bf72ae6bc793e4f8418490be4be0b4ee900b8", 20
-"0xe0f95e84a680da21b9d410d59553c91aff515104", 20
-"0x4529a7ad0d4979fcb3e8e577339fac51d46afc73", 0
-"0xa53cfb5697f17b97e36db9eb76faa2d8868f0ecf", 0
+```
+f79e502ffdc85c91e643f61eebcadecadd7330e0, 20
+1d8a14344df5b8f96f659c965614f623df83d5e9, 20
+22fb800aaeab6af13e8fd76623b6acab3ee15b62, 20
+428a0e1c7f7e90dc9b4c459116776d9070fb62d3, 20
+cd7bf72ae6bc793e4f8418490be4be0b4ee900b8, 20
+e0f95e84a680da21b9d410d59553c91aff515104, 20
+4529a7ad0d4979fcb3e8e577339fac51d46afc73, 0
+a53cfb5697f17b97e36db9eb76faa2d8868f0ecf, 0
+```
 
+All account have the password 'changeme'.
 
-Start local ethereum mining node
---------------------------------
+Start ethereum mining node
+--------------------------
+
+The ethereum network needs a mining node to process transactions:
 
 > bin/mine
 
 The mining node deposits ethereum into the following account:
-0xf79e502ffdc85c91e643f61eebcadecadd7330e0
 
-Connect to the local ethereum node (in a separate tab)
-------------------------------------------------------
+f79e502ffdc85c91e643f61eebcadecadd7330e0
+
+Attach to your mining node
+--------------------------
+
+You can interact with the ethereum network by attaching to your mining node:
 
 > bin/attach
 
+This will present a javascript console where you can run various commands
+
 Send ether from one account to another
 --------------------------------------
+
+Form the console attached to your mining node, you can send ether from one
+ account to another.  First we check the balances of the from and to accounts:
+
 > var from = web3.eth.accounts[1]
 
-> personal.unlockAcccount(from, 'changeme')
+> personal.unlockAccount(from, 'changeme')
 
 > web3.eth.getBalance(from)
 
@@ -64,7 +84,22 @@ Send ether from one account to another
 
 20000000000000000000
 
+Now we send ether:
+
 > eth.sendTransaction({from: from, to: to, value: 1})
+
+"0xdc6a6858f57c100398dabb5868549a6a113508b40bcc43b5b5aad639821c3fad"
+
+If you check the mining node console, you will see this transaction logged:
+
+```
+I0124 09:35:24.849818 internal/ethapi/api.go:1047]
+Tx(0xdc6a6858f57c100398dabb5868549a6a113508b40bcc43b5b5aad639821c3fad)
+to: 0x22fb800aaeab6af13e8fd76623b6acab3ee15b62
+```
+
+Now you can check the balances of the from and to account to verify that
+ether was moved:
 
 > web3.eth.getBalance(from)
 
@@ -77,12 +112,21 @@ Send ether from one account to another
 Deploy the greeter contract and call the greet method
 -----------------------------------------------------
 
-> loadScript('deloy.js');
+From the attached console, you can deploy the
+[greeter smart contract](https://www.ethereum.org/greeter) and
+use it:
 
+> loadScript('deploy.js');
+
+```
 Contract mined! address: 0x1b9dfd2ea79f59491b7881c508010af5410cd096 transactionHash: 0xe92dfdbea562e59661a483f21b8d2fedebebe4eb0b9cee00bfc9fb97ffa329e6
 null [object Object]
 Contract mined! address: 0xe9f5d76475b180a709025dde31091b9793742119 transactionHash: 0x1ca2b4240d5957ea68ff9dc5aeee08050b8d533e1636586e47ad9222b945b1f1
+```
 
 > greeter.greet();
 
 "hello private test network"
+
+NOTE: The contract in deploy.js is the default contract displayed in the
+[online solidity compiler](https://ethereum.github.io/browser-solidity)

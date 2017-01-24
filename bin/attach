@@ -1,1 +1,2 @@
-geth attach ipc:./.datadir/geth.ipc
+geth \
+  attach ipc:./.datadir/geth.ipc

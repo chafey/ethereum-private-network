@@ -1,4 +1,8 @@
-personal.unlockAccount(web3.eth.accounts[0]);
+// must unlock the account we are creating the contract from so we can spend its ether
+personal.unlockAccount(web3.eth.accounts[0], 'changeme');
+
+// The following was copied from the online solidity compiler:
+// https://ethereum.github.io/browser-solidity
 var mortalContract = web3.eth.contract([{"constant":false,"inputs":[],"name":"kill","outputs":[],"payable":false,"type":"function"},{"inputs":[],"payable":false,"type":"constructor"}]);
 var mortal = mortalContract.new(
    {
@@ -12,6 +16,7 @@ var mortal = mortalContract.new(
     }
  });
 
+ // We set set our custom greeting here
  var _greeting = 'hello private test network' ;
  var greeterContract = web3.eth.contract([{"constant":false,"inputs":[],"name":"kill","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"greet","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"inputs":[{"name":"_greeting","type":"string"}],"payable":false,"type":"constructor"}]);
  var greeter = greeterContract.new(
