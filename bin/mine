@@ -2,6 +2,7 @@ geth \
   --datadir .datadir \
   --networkid 1000 \
   --rpc \
+  --rpcapi "eth,net,web3,personal" \
   --ipcpath .datadir/geth.ipc \
   --nodiscover \
   --mine \
