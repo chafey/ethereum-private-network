@@ -40,6 +40,7 @@ accounts with the listed ether:
 0xe0f95e84a680da21b9d410d59553c91aff515104, 20
 0x4529a7ad0d4979fcb3e8e577339fac51d46afc73, 0
 0xa53cfb5697f17b97e36db9eb76faa2d8868f0ecf, 0
+0x1e2bde1ea8884e04d2896b7182d6d6c564f1de4c, 20
 ```
 
 All account have the password 'changeme'.

@@ -1,3 +1,4 @@
+#/Users/chafey/src/OpenSource/go-ethereum/build/bin/geth \
 geth \
   --datadir .datadir \
   --networkid 1000 \
@@ -7,4 +8,5 @@ geth \
   --nodiscover \
   --mine \
   --minerthreads 1 \
+  --verbosity 3 \
   --etherbase 0xf79e502ffdc85c91e643f61eebcadecadd7330e0
