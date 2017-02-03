@@ -9,4 +9,5 @@ geth \
   --mine \
   --minerthreads 1 \
   --verbosity 3 \
+  --rpccorsdomain "*" \
   --etherbase 0xf79e502ffdc85c91e643f61eebcadecadd7330e0
