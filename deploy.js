@@ -1,5 +1,5 @@
 // must unlock the account we are creating the contract from so we can spend its ether
-personal.unlockAccount(web3.eth.accounts[0], 'changeme');
+personal.unlockAccount(web3.eth.accounts[0], 'iloveethereum');
 
 // The following was copied from the online solidity compiler:
 // https://ethereum.github.io/browser-solidity

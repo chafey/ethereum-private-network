@@ -1,2 +1,2 @@
 geth \
-  attach ipc:./.datadir/geth.ipc
+  attach http://localhost:8545
